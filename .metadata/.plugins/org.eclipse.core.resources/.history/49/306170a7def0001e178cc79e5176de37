@@ -1,0 +1,125 @@
+package com.edubridge.contactapp;
+
+import java.util.List;
+
+import java.util.Scanner;
+
+
+import com.edubridge.contactapp.model.Contact;
+import com.edubridge.contactapp.service.ContactService;
+import com.edubridge.contactapp.service.ContactServiceImpl;
+
+public class App
+{
+	
+    public static void main( String[] args ) {
+    	Scanner in = new Scanner(System.in);
+    	int option = 0;
+    	String name = null,email = null;
+    	Long mobile = 0L;
+    	int id = 0;
+    	ContactService service = new ContactServiceImpl();
+    	do {
+    	System.out.println("CONTACT APPLICATION");
+    	System.out.println("--------------");
+    	System.out.println("1.Add Contact");
+    	System.out.println("2.View Contact");
+    	System.out.println("3.Search Contact");
+    	System.out.println("4.Update Contact");
+    	System.out.println("5.Delete Contact");
+    	System.out.println("6.Delete All Cntact");
+    	System.out.println("0.Exit");
+    	
+    	System.out.println("Please choose option");
+    	
+    	option = in.nextInt();
+    	
+    	switch(option) {
+    	case 1:
+    		System.out.println("Please enter name:");
+    		name = in.next();
+    		System.out.println("Please enter email");
+    		email = in.next();
+    		System.out.println("Please enter mobile");
+    		
+    		mobile = in.nextLong();
+    		
+    		Contact newContact = new Contact();
+    		newContact.setName(name);
+    		newContact.setEmail(email);
+    		newContact.setMobile(mobile);
+    		int status = service.addContact(newContact);
+    		if(status>=1) {
+    			System.out.println("new contact added successfully!");
+    		}else {
+    			System.out.println("something is wrong");
+    		}
+    		break;
+    		 
+    	case 2:
+    		List<Contact> contacts = service.viewContacts();
+    		if(contacts.size()!=0) {
+    			System.out.println("NAME\tEMAIL\t\tMOBILE");
+    		for(Contact c : contacts) {
+    		  System.out.println(c.getName()+"\t"+c.getEmail()+"\t"+c.getMobile()+"\t");
+    		}
+    		}else {
+    			System.out.println("No contacts Found");
+    			
+    		}
+    		  break;
+    	case 3:
+    		System.out.println("search contact By Name");
+    		name = in.next();
+    		Contact searchContact = service.findContactByName(name);
+    		if(searchContact != null);
+    		System.out.println("ID:"+searchContact.getId());
+    		System.out.println("NAME:"+searchContact.getName());
+    		System.out.println("EMAIL:"+searchContact.getEmail());
+    		System.out.println("MOBILE:"+searchContact.getMobile());
+    
+    		System.out.println("no contact found");
+    	
+    		break;
+    		
+    	case 4:
+    		System.out.println("update contact");
+    		break;
+    		
+    	case 5:
+    		System.out.println("Please enter name:");
+    		name = in.next();
+    		if(service.findContactByName(name) ! = null);
+    		   status = service.deleteContact(name);
+    		
+    		if(status >=1) {
+    		System.out.println("employee is deleted");
+    		}else {
+    			System.out.println("something is wrong!");
+    		}
+    	}else {
+    		System.out.println("no contact found!");
+    	}
+    	break;
+    	
+    	
+    	
+    	case 6:
+    		System.out.println("delete all contacts");
+    		break;
+    	case 0:
+    		System.out.println("Bye!!");
+    		System.exit(0);
+    		break;
+    		
+    		default:
+    			System.out.print("Invalid Option.Please choose correct option");
+    			break;
+    	}
+    	
+    	} while(option!=0);
+    	}
+    }
+    
+
+

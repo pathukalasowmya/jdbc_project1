@@ -1,0 +1,5 @@
+package com.edubridge.contactapp.dao;
+
+public interface ContactDao {
+
+}

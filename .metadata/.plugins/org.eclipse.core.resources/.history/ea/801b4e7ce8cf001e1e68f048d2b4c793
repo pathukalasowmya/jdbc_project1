@@ -1,0 +1,18 @@
+import java.util.Arrays; 
+
+public class ArraysDemo2 {
+
+	public static void main(String[] args) {
+		double[] salaries = {35000,45000,55000,66000,77000};
+		System.out.println(salaries);
+		System.out.println(Arrays.toString(salaries));
+		
+		int size = salaries.length;
+		System.out.println(size);
+		
+		
+		}
+
+	}
+
+

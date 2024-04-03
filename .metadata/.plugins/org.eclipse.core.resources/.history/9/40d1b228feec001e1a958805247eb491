@@ -1,0 +1,66 @@
+package jdbcapp1;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.UUID;
+
+
+
+public class BatchProcessing {
+ public static void main(String[] args) throws ClassNotFoundException, SQLException {
+	String driver,url,userName,password;
+	driver="com.mysql.cj.jdbc.Driver";//driver class present in this 
+	url ="jdbc:mysql://localhost:3306/db11223";
+	userName = "root";
+	password ="root";
+	
+	String INSERT_QUERY1 = "insert into employee values(101,'Wills',55000)";
+	String INSERT_QUERY2 = "insert into employee values(102,'Smith',55000)";
+	String INSERT_QUERY3 = "insert into employee values(103,'Jones',55000)";
+	String INSERT_QUERY4 = "insert into employee values(104,'Alice',55000)";
+	String INSERT_QUERY5 = "insert into employee values(105,'Alex',55000)";
+
+
+	
+	//1.loading driverClass
+		//it is optional from java 1.5vDisplayEmployeeDetails.java
+		Class.forName(driver);
+		
+		//2.Establish connection
+		Connection con =DriverManager.getConnection(url,userName,password);
+		
+		//3. Create statement /preparedStatement/callableStatement object
+		 Statement statement = con.createStatement();
+		 statement.addBatch("INSERT INTO EMPLOYEE(ID, NAME, SAL) "
+		  + "VALUES ('1','EmployeeName','SAL')");
+		 statement.addBatch("INSERT INTO EMPLOYEE(ID, NAME, SAl) "
+		  + "VALUES ('2','EmployeeName','SAL')");
+		 
+		 String[] EMPLOYEES = new String[]{"Wills","Smith","Jones","Alice","Alex"};
+		 int[] Sal = new int[]{55000,55000,55000,55000,55000};
+
+		 String insertEmployeeSQL = "INSERT INTO EMPLOYEE(ID, NAME, Sal) "
+		  + "VALUES (?,?,?)";
+		 Connection connection = null;
+		PreparedStatement ps = connection.prepareStatement(insertEmployeeSQL);
+		 
+		for(int i = 0; i < EMPLOYEES.length; i++){
+		    String employeeId = UUID.randomUUID().toString();
+		    ps.setString(1,employeeId);
+		    ps.setString(2,EMPLOYEES[i]);
+		    ps.setLong(3,Sal[i]);
+		    ps.addBatch();
+		}
+		ps.executeBatch();
+	
+		 statement.executeBatch();
+		//5.close resources
+	     ps.close();
+	     con.close();
+}
+}
+

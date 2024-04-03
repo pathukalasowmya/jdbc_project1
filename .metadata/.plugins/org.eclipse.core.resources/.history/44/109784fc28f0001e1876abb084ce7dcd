@@ -1,0 +1,53 @@
+package com.edubridge.contactapp;
+
+import java.util.Scanner;
+
+public class App 
+{
+    public static void main( String[] args ) {
+    Scanner in = new Scanner(System.in);
+    int option = 0;
+    do {
+    	System.out.println("CONTACT APPLICATION");
+    	System.out.println("-------------");
+    	System.out.println("1.Add Contact");
+        System.out.println("2.View Contact");
+        System.out.println("3. Search Contact");
+        System.out.println("Update Contact");
+        System.out.println("Delete Contact");
+        System.out.println("Delete All Contact");
+        System.out.println("0.Exit");  
+     option = in.nextInt();
+     
+     switch(option) {
+     case 1:
+    	 System.out.println("add contact");
+     break;
+     
+     case 2: 
+    	 System.out.println("view contact");
+     break;
+     case 3:
+    	 System.out.println("search contact");
+    	 break;
+     case 4:
+    	 System.out.println("update contact");
+    	 break;
+     case 5:
+    	 System.out.println("delete contant");
+    	 break;
+     case 6:
+    	 System.out.println("delete all contacts");
+    	 break;
+     case 7 :
+    	 System.out.println("bye!!!");
+ break;
+     case 0:
+    	 System.out.println("Invalid Option.Please choose correct option");
+    	 break;
+     }while (option != 0);
+     
+     
+       
+    }
+}

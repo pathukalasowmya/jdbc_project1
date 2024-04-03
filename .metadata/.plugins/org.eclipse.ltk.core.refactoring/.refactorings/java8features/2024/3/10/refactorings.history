@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;java8features.LambdaExpressionDemo&apos; to &apos;LambdaExpressionDemo1&apos;&#x0D;&#x0A;- Original project: &apos;java8features&apos;&#x0D;&#x0A;- Original element: &apos;java8features.LambdaExpressionDemo&apos;&#x0D;&#x0A;- Renamed element: &apos;java8features.LambdaExpressionDemo1&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;LambdaExpressionDemo&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;java8features{LambdaExpressionDemo.java[LambdaExpressionDemo" matchStrategy="1" name="LambdaExpressionDemo1" qualified="false" references="true" similarDeclarations="false" stamp="1709717907304" textual="false" version="1.0"/>
+</session>
