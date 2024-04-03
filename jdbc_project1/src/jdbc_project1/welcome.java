@@ -4,6 +4,7 @@ public class welcome {
 	public static void main(String[] args) {
 		System.out.println("welcome to sowmya");
 		System.out.println("welcome to java");
+		System.out.println("welcome Home");
 	}
 
 }
