@@ -5,5 +5,6 @@ public static void main(String[] args) {
 	System.out.println("name is nani");
 	System.out.println("name is rebel star");
 	System.out.println("name is surya");
+	System.out.println("name is kajal");
 }
 }
